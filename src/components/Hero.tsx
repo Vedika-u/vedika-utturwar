@@ -78,7 +78,7 @@ export function Hero() {
               LinkedIn
             </a>
             <a
-              href="/resume.pdf"
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-bg-raised px-5 py-2.5 text-sm font-semibold text-text transition-transform hover:scale-[1.04] hover:border-accent active:scale-[0.98]"
