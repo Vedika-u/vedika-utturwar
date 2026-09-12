@@ -4,7 +4,7 @@ export const profile = {
   role: 'Aspiring Software Engineer & AI Engineer',
   focus: 'Agentic AI · Generative AI · Backend Engineering · Cybersecurity Automation',
   location: 'Banasthali Vidyapeeth, Rajasthan',
-  email: 'btbti24094_vedika@basthali.in',
+  email: 'btbti24094_vedika@banasthali.in',
   github: 'https://github.com/Vedika-u',
   linkedin: 'https://www.linkedin.com/in/vedika-utturwar-b37b75336',
   year: 'Third-year',
