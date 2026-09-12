@@ -3,6 +3,7 @@ import { PipelineDiagram } from './PipelineDiagram'
 export function ActAwareDiagram() {
   return (
     <PipelineDiagram
+      tone="lavender"
       caption="10-layer pipeline, compressed here to its core stages. The LLM reasoning layer only activates when a human analyst requests it, and every SOAR action is RBAC-gated before execution."
       stages={[
         { label: 'Log Sources', sublabel: 'EDR · Firewall · IAM · Apps' },
@@ -21,6 +22,7 @@ export function ActAwareDiagram() {
 export function EmailAgentDiagram() {
   return (
     <PipelineDiagram
+      tone="peach"
       caption="The agent reasons over each incoming message before it ever reaches the inbox view, so the UI shows a ranked worklist rather than a raw message stream."
       stages={[
         { label: 'Incoming Email', sublabel: 'connected mailbox' },
@@ -37,6 +39,7 @@ export function EmailAgentDiagram() {
 export function OrbitDeskDiagram() {
   return (
     <PipelineDiagram
+      tone="mint"
       caption="Every answer must pass the verification node — grounding, citation validity, and superseded-source checks — before it's returned. Ungrounded or unverifiable answers fail safe instead of guessing."
       stages={[
         { label: 'Question', sublabel: 'natural language' },

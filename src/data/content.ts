@@ -7,11 +7,14 @@ export const profile = {
   email: 'btbti24094_vedika@basthali.in',
   github: 'https://github.com/Vedika-u',
   linkedin: 'https://www.linkedin.com/in/vedika-utturwar-b37b75336',
+  year: 'Third-year',
+  cgpa: '9.61',
+  gradYear: '2028',
 }
 
 export const about = {
   paragraphs: [
-    "I'm a second-year Information Technology undergraduate at Banasthali Vidyapeeth, currently holding a 9.61 CGPA. My focus is on agentic AI systems — software that doesn't just respond to input, but reasons through multi-step workflows: triaging, prioritizing, and acting with a human kept in the loop.",
+    "I'm a third-year Information Technology undergraduate at Banasthali Vidyapeeth (graduating 2028), currently holding a 9.61 CGPA. My focus is on agentic AI systems — software that doesn't just respond to input, but reasons through multi-step workflows: triaging, prioritizing, and acting with a human kept in the loop.",
     "Across two hackathons, I've helped build a SIEM-SOAR platform for banking cybersecurity and an autonomous productivity agent for email — both under real time pressure, both shipped as working systems rather than slide decks. I work comfortably across the stack: Python/FastAPI services, React/TypeScript frontends, and data layers spanning MySQL and Elasticsearch.",
     "Outside of engineering, I placed 4th nationally in Le Grand Concours, a French language competition run with the Embassy of France in India — evidence that the same discipline I bring to debugging a detection pipeline applies elsewhere too.",
   ],
@@ -205,12 +208,52 @@ export const achievements = [
   },
 ]
 
+export type Milestone = {
+  title: string
+  detail: string
+  date: string
+  tone: 'lavender' | 'blue' | 'peach' | 'pink'
+  kind: 'Hackathon' | 'Language'
+}
+
+export const milestones: Milestone[] = [
+  {
+    title: 'Barclays Hack-O-Hire Hackathon',
+    detail: 'Built Act Aware, an offline AI-powered SIEM-SOAR platform for banking cybersecurity, as part of a 5-member team.',
+    date: 'March 2026',
+    tone: 'lavender',
+    kind: 'Hackathon',
+  },
+  {
+    title: 'HackCelestia — 48-Hour Hackathon',
+    detail: 'Designed and presented an autonomous productivity agent for email prioritization, task management, and scheduling.',
+    date: 'January 2026',
+    tone: 'blue',
+    kind: 'Hackathon',
+  },
+  {
+    title: 'Certificate Course for Modern European Language (French)',
+    detail: 'Completed a certified French language course with Distinction in the university-conducted examination.',
+    date: 'May 2025',
+    tone: 'peach',
+    kind: 'Language',
+  },
+  {
+    title: 'Le Grand Concours 2024 — French Language Competition',
+    detail:
+      'Secured 94/100 and Position IV nationally, in a competition organized with Uzbekistan State World Languages University and the Embassy of France in India.',
+    date: 'October 2024',
+    tone: 'pink',
+    kind: 'Language',
+  },
+]
+
 export const education = [
   {
     degree: "Bachelor's in Information Technology",
     institution: 'Banasthali Vidyapeeth, Rajasthan',
     detail: '9.61 CGPA',
-    date: 'July 2024 – Present',
+    date: 'July 2024 – Expected 2028',
   },
   {
     degree: '12th — Maharashtra State Board',

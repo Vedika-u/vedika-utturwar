@@ -4,7 +4,6 @@ import { Capabilities } from './components/Capabilities'
 import { Contact } from './components/Contact'
 import { Education } from './components/Education'
 import { Footer } from './components/Footer'
-import { GitHubActivity } from './components/GitHubActivity'
 import { Hero } from './components/Hero'
 import { Nav } from './components/Nav'
 import { Projects } from './components/Projects'
@@ -22,7 +21,6 @@ function App() {
         <Capabilities />
         <Achievements />
         <Education />
-        <GitHubActivity />
         <Contact />
       </main>
       <Footer />

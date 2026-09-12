@@ -1,9 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
-import { useState } from 'react'
-import { useTheme } from '../hooks/useTheme'
-import { githubRepos, profile } from '../data/content'
+import { githubRepos } from '../data/content'
 import { Reveal } from './Reveal'
-import { SectionHeading } from './SectionHeading'
+import { GithubIcon } from './icons'
 
 const LANG_COLOR: Record<string, string> = {
   Python: '#3776ab',
@@ -11,47 +9,29 @@ const LANG_COLOR: Record<string, string> = {
   'C++': '#00599c',
 }
 
-export function GitHubActivity() {
-  const { theme } = useTheme()
-  const [statsFailed, setStatsFailed] = useState(false)
-  const username = 'Vedika-u'
-  const statsTheme = theme === 'dark' ? 'dark' : 'default'
-
+export function GithubStrip() {
   return (
-    <section id="github" className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading
-        index="07 / GitHub"
-        title="Recent activity"
-        description="A live look at the repos above, straight from GitHub."
-      />
+    <div className="mt-16">
+      <Reveal className="mb-6 flex items-center gap-2">
+        <GithubIcon size={16} className="text-text-muted" />
+        <h3 className="text-sm font-semibold text-text-muted">More on GitHub</h3>
+      </Reveal>
 
-      {!statsFailed && (
-        <Reveal className="mb-8 overflow-hidden rounded-2xl border border-border bg-bg-raised p-2">
-          <img
-            key={statsTheme}
-            src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true&bg_color=00000000&theme=${statsTheme}&hide=stars`}
-            alt={`${profile.name}'s GitHub stats`}
-            className="mx-auto w-full max-w-xl"
-            onError={() => setStatsFailed(true)}
-          />
-        </Reveal>
-      )}
-
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {githubRepos.map((repo, i) => (
-          <Reveal key={repo.name} delay={i * 0.04}>
+          <Reveal key={repo.name} delay={(i % 3) * 0.04}>
             <a
               href={repo.url}
               target="_blank"
               rel="noreferrer"
-              className="group flex h-full flex-col justify-between rounded-2xl border border-border bg-bg-raised p-6 transition-colors hover:border-border-strong"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-border-strong/40 bg-bg-raised p-5 transition-transform hover:-translate-y-0.5"
             >
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <span className="font-mono text-sm font-medium text-text">{repo.name}</span>
                   <ArrowUpRight
                     size={15}
-                    className="mt-0.5 shrink-0 text-text-faint transition-colors group-hover:text-text"
+                    className="mt-0.5 shrink-0 text-text-faint transition-colors group-hover:text-accent"
                   />
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-text-muted">{repo.description}</p>
@@ -67,6 +47,6 @@ export function GitHubActivity() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
