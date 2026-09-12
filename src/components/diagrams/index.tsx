@@ -1,4 +1,51 @@
+import { Bot, Calendar, CheckSquare, Database, ListOrdered, Mail, MessageSquareText, Search, ShieldAlert, ShieldCheck, Siren, Sparkles } from 'lucide-react'
 import { PipelineDiagram } from './PipelineDiagram'
+import { SimpleFlow } from './SimpleFlow'
+
+export function ActAwareFlow() {
+  return (
+    <SimpleFlow
+      tone="lavender"
+      nodes={[
+        { label: 'Logs', icon: Database },
+        { label: 'Detection', icon: Search },
+        { label: 'AI Analysis', icon: ShieldAlert },
+        { label: 'Incident', icon: Siren },
+        { label: 'Response', icon: ShieldCheck },
+      ]}
+    />
+  )
+}
+
+export function EmailAgentFlow() {
+  return (
+    <SimpleFlow
+      tone="peach"
+      nodes={[
+        { label: 'Emails', icon: Mail },
+        { label: 'LLM Agent', icon: Bot },
+        { label: 'Prioritization', icon: ListOrdered },
+        { label: 'Tasks', icon: CheckSquare },
+        { label: 'Scheduling', icon: Calendar },
+      ]}
+    />
+  )
+}
+
+export function OrbitDeskFlow() {
+  return (
+    <SimpleFlow
+      tone="mint"
+      nodes={[
+        { label: 'Question', icon: MessageSquareText },
+        { label: 'Retrieval', icon: Search },
+        { label: 'Generation', icon: Sparkles },
+        { label: 'Verification', icon: ShieldCheck },
+        { label: 'Answer', icon: CheckSquare },
+      ]}
+    />
+  )
+}
 
 export function ActAwareDiagram() {
   return (

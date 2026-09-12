@@ -23,12 +23,16 @@ export const about = {
 export type Project = {
   slug: string
   name: string
+  category: string
   event: string
   date: string
   tagline: string
+  oneLiner: string
+  shortFeatures: string[]
   problem: string
   solution: string
   role: string
+  results: string
   features: string[]
   stack: {
     label: string
@@ -43,9 +47,14 @@ export const projects: Project[] = [
   {
     slug: 'act-aware',
     name: 'Act Aware — AI-Powered Cyber Incident Response Platform',
+    category: 'AI · Cybersecurity',
     event: 'Barclays Hack-O-Hire Hackathon',
     date: 'March 2026',
     tagline: 'A fully offline SIEM-SOAR pipeline that detects, correlates, and explains banking security incidents.',
+    oneLiner: 'An offline AI platform that detects, explains, and helps respond to banking security incidents.',
+    shortFeatures: ['Anomaly detection', 'Attack graph modeling', 'Explainable AI', 'Human-gated automation'],
+    results:
+      'Working across the detection and response layers with a 5-person team reinforced how much explainability and human-in-the-loop control matter in security automation — not just raw detection accuracy.',
     problem:
       'Banking SOC teams drown in false alerts from rule-based SIEM tools, miss multi-stage and insider attacks, and spend hours manually correlating logs across EDR, firewall, IAM, and application sources — with no explainable trail for why an action was taken.',
     solution:
@@ -76,9 +85,14 @@ export const projects: Project[] = [
   {
     slug: 'email-productivity-agent',
     name: 'Autonomous Email Productivity Agent',
+    category: 'AI · Automation',
     event: 'HackCelestia Hackathon',
     date: 'January 2026',
     tagline: 'An agentic AI system that triages, summarizes, and schedules around your inbox — so you don’t have to.',
+    oneLiner: 'An agentic AI system that prioritizes, summarizes, and schedules your inbox automatically.',
+    shortFeatures: ['Smart prioritization', 'LLM summarization', 'Task auto-extraction', 'Voice compose'],
+    results:
+      'Shipping both the agent logic and the UI in 48 hours meant prioritizing a simple, verifiable reasoning flow over a cleverer but harder-to-debug one.',
     problem:
       'Inboxes accumulate faster than they can be processed: important messages sit next to noise, tasks buried in email threads get missed, and manually re-prioritizing every morning is dead time.',
     solution:
@@ -103,9 +117,14 @@ export const projects: Project[] = [
   {
     slug: 'orbitdesk',
     name: 'OrbitDesk — Local-First Support Agent',
+    category: 'AI · LLM',
     event: 'AI Engineer Internship Assignment, Tantrabodh AI',
     date: 'August 2026',
     tagline: 'A fully offline, test-verified LangGraph agent that answers support questions and refuses to guess.',
+    oneLiner: 'A local-first support agent that verifies its own answers instead of guessing.',
+    shortFeatures: ['Grounded retrieval', 'Self-verification', '16 automated tests', 'Fully offline'],
+    results:
+      'The verification node ended up mattering as much as the generation model itself — a small model with strict grounding checks is more trustworthy than a bigger one without them.',
     problem:
       'Support agents built on LLMs tend to hallucinate answers or cite outdated guidance when documentation and resolved-case history disagree — and most demos never prove correctness beyond a happy-path example.',
     solution:
