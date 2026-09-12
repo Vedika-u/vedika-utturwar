@@ -1,0 +1,101 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-tint: var(--accent-tint);
+  --color-code-bg: var(--code-bg);
+}
+
+:root {
+  --bg: #fafaf9;
+  --bg-raised: #ffffff;
+  --text: #1c1c1e;
+  --text-muted: #57565c;
+  --text-faint: #8a898f;
+  --border: #e4e3e0;
+  --border-strong: #d2d1cd;
+  --accent: #0f7a68;
+  --accent-strong: #0a5f51;
+  --accent-tint: rgba(15, 122, 104, 0.08);
+  --accent-tint-strong: rgba(15, 122, 104, 0.14);
+  --code-bg: #f1f0ec;
+  --ring: rgba(15, 122, 104, 0.35);
+}
+
+:root.dark {
+  --bg: #0b0c0d;
+  --bg-raised: #131416;
+  --text: #ededec;
+  --text-muted: #a3a2a0;
+  --text-faint: #6d6c6a;
+  --border: #232426;
+  --border-strong: #2f3133;
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --accent-tint: rgba(45, 212, 191, 0.1);
+  --accent-tint-strong: rgba(45, 212, 191, 0.16);
+  --code-bg: #17181a;
+  --ring: rgba(45, 212, 191, 0.4);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-tint-strong);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
