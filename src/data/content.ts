@@ -15,7 +15,7 @@ export const profile = {
 export const about = {
   paragraphs: [
     "I'm a third-year Information Technology undergraduate at Banasthali Vidyapeeth (graduating 2028), currently holding a 9.61 CGPA. My focus is on agentic AI systems — software that doesn't just respond to input, but reasons through multi-step workflows: triaging, prioritizing, and acting with a human kept in the loop.",
-    "Across two hackathons, I've helped build a SIEM-SOAR platform for banking cybersecurity and an autonomous productivity agent for email — both under real time pressure, both shipped as working systems rather than slide decks. I work comfortably across the stack: Python/FastAPI services, React/TypeScript frontends, and data layers spanning MySQL and Elasticsearch.",
+    "Across two hackathons, I've helped build a SIEM-SOAR platform for banking cybersecurity and an autonomous productivity agent for email — both under real time pressure, both shipped as working systems rather than slide decks. More recently, I took that same detection instinct into a self-directed project: building an LLM agent from scratch and red-teaming it myself, measuring Attack Success Rate before and after a custom detection layer instead of just demoing a happy path. I work comfortably across the stack: Python/FastAPI services, React/TypeScript frontends, and data layers spanning MySQL and Elasticsearch.",
     "Outside of engineering, I placed 4th nationally in Le Grand Concours, a French language competition run with the Embassy of France in India — evidence that the same discipline I bring to debugging a detection pipeline applies elsewhere too.",
   ],
 }
@@ -39,11 +39,49 @@ export type Project = {
     items: string[]
   }[]
   links: { label: string; href: string }[]
-  diagram: 'emailAgent' | 'actAware' | 'orbitDesk'
+  diagram: 'emailAgent' | 'actAware' | 'orbitDesk' | 'agentPenTest'
   featured: boolean
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'agent-penetration-test',
+    name: 'AgentPenetrationTest — LLM Agent Red-Teaming Harness',
+    category: 'AI · Security Research',
+    event: 'Self-Directed Research Project',
+    date: 'September 2026',
+    tagline: 'A red-teaming harness that attacks an LLM agent built from scratch — then measures, in real numbers, how often the attacks work.',
+    oneLiner: 'A benchmarked red-teaming harness that attacks a self-built LLM agent and measures Attack Success Rate before and after a custom detection layer.',
+    shortFeatures: ['Self-built LangGraph target', 'garak-driven red-teaming', 'Embedding-based injection detector', 'Benchmarked ASR + live dashboard'],
+    results:
+      'Measured a real precision/recall/F1 (0.689 / 0.840 / 0.757) for the injection detector on 196 held-out examples, and an Attack Success Rate of 5% → 0% before/after detection on a 20-behavior stratified JailbreakBench subset — reported honestly alongside the caveat that the sample is small and the target model’s own safety tuning already blocked 19/20 attempts independent of the detector.',
+    problem:
+      'Most AI red-teaming demos run a public scanner against someone else’s chatbot and report a vague "it worked" — without fully understanding the target’s actual attack surface, and without a measured, reproducible before/after result.',
+    solution:
+      'A target agent built end-to-end for this project — a LangGraph state graph with web search, a SQLite-backed persistent notes store, and a calculator — deliberately designed to expose direct prompt injection, indirect tool-output injection, and memory poisoning as first-class attack surfaces. A harness wraps the agent’s API as a garak REST generator, drives garak’s probe suite against it, and ingests every attack/response pair. A detection layer — a grounding/claim check, a memory-integrity check on the notes tool, and an embedding-similarity injection classifier (Ollama nomic-embed-text) — is wired directly into the agent’s own verification node rather than bolted on separately. Results are scored against JailbreakBench and a StrongREJECT-style rubric and surfaced on a deployed React dashboard.',
+    role:
+      'Solo, self-directed project with no external deadline, built across five phases: the target agent, the attack harness, the detection layer, benchmark scoring, and the dashboard — including the literature review (garak, JailbreakBench, StrongREJECT, OWASP LLM Top 10) that shaped the scope decisions.',
+    features: [
+      'LangGraph target agent with three tools (web search, notes, calculator) and SQLite-backed persistent memory, exposing a memory-poisoning attack surface most toy agents lack the state to exhibit',
+      'garak-driven attack harness wrapping the agent’s /attack endpoint as a REST generator, ingesting every (probe, prompt, output, detector score) row into SQLite',
+      'In-graph detection layer: grounding/claim check, memory-integrity check on the notes tool, and an embedding-similarity injection/jailbreak classifier',
+      'Detector precision/recall/F1 measured against a held-out mix of deepset/prompt-injections and JailbreakBench/JBB-Behaviors',
+      'Attack Success Rate benchmarked before/after detection using a StrongREJECT-lite LLM-judge rubric, with methodology and caveats disclosed in full',
+      'React/TypeScript dashboard deployed to GitHub Pages, reading real result JSON rather than mock data',
+    ],
+    stack: [
+      { label: 'Target Agent', items: ['Python', 'LangGraph', 'FastAPI', 'Ollama'] },
+      { label: 'Red-Teaming', items: ['garak', 'JailbreakBench', 'StrongREJECT'] },
+      { label: 'Detection', items: ['Ollama (nomic-embed-text)', 'SQLite'] },
+      { label: 'Dashboard', items: ['React', 'TypeScript', 'Vite'] },
+    ],
+    links: [
+      { label: 'Repository', href: 'https://github.com/Vedika-u/agent-penetration-test' },
+      { label: 'Live Dashboard', href: 'https://vedika-u.github.io/agent-penetration-test/' },
+    ],
+    diagram: 'agentPenTest',
+    featured: true,
+  },
   {
     slug: 'act-aware',
     name: 'Act Aware — AI-Powered Cyber Incident Response Platform',
@@ -289,6 +327,12 @@ export const education = [
 ]
 
 export const githubRepos = [
+  {
+    name: 'agent-penetration-test',
+    description: 'Self-built LangGraph target agent + garak-driven red-teaming harness, benchmarked against JailbreakBench.',
+    language: 'Python',
+    url: 'https://github.com/Vedika-u/agent-penetration-test',
+  },
   {
     name: 'hack_o_hire',
     description: 'Act Aware backend — offline SIEM-SOAR pipeline (Python, FastAPI, Elasticsearch).',

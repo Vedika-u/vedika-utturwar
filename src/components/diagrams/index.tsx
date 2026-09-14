@@ -1,4 +1,4 @@
-import { Bot, Calendar, CheckSquare, Database, ListOrdered, Mail, MessageSquareText, Search, ShieldAlert, ShieldCheck, Siren, Sparkles } from 'lucide-react'
+import { BarChart3, Bot, Calendar, CheckSquare, Database, ListOrdered, Mail, MessageSquareText, Search, ShieldAlert, ShieldCheck, Siren, Sparkles } from 'lucide-react'
 import { PipelineDiagram } from './PipelineDiagram'
 import { SimpleFlow } from './SimpleFlow'
 
@@ -42,6 +42,21 @@ export function OrbitDeskFlow() {
         { label: 'Generation', icon: Sparkles },
         { label: 'Verification', icon: ShieldCheck },
         { label: 'Answer', icon: CheckSquare },
+      ]}
+    />
+  )
+}
+
+export function AgentPenTestFlow() {
+  return (
+    <SimpleFlow
+      tone="blue"
+      nodes={[
+        { label: 'Target Agent', icon: Bot },
+        { label: 'garak Attacks', icon: ShieldAlert },
+        { label: 'Detection', icon: ShieldCheck },
+        { label: 'ASR Scoring', icon: BarChart3 },
+        { label: 'Dashboard', icon: Sparkles },
       ]}
     />
   )
@@ -95,6 +110,23 @@ export function OrbitDeskDiagram() {
         { label: 'Generation', sublabel: 'Qwen2.5-1.5B-Instruct' },
         { label: 'Verification', sublabel: 'grounding + citation checks', badge: 'fail-safe' },
         { label: 'Answer', sublabel: 'or escalate / clarify' },
+      ]}
+    />
+  )
+}
+
+export function AgentPenTestDiagram() {
+  return (
+    <PipelineDiagram
+      tone="blue"
+      caption="The target agent is built from scratch in this repo, not borrowed, so every attack surface — prompt injection, tool-output injection, memory poisoning via the notes store — is fully understood. Detection is wired directly into the agent's own verify node rather than bolted on as a separate service."
+      stages={[
+        { label: 'Attack Corpus', sublabel: 'JailbreakBench · StrongREJECT · deepset' },
+        { label: 'Target Agent', sublabel: 'LangGraph: tools + SQLite memory' },
+        { label: 'Attack Runner', sublabel: 'garak REST generator' },
+        { label: 'Detection Layer', sublabel: 'grounding + memory-integrity + injection detector', badge: 'in-graph' },
+        { label: 'Scorer', sublabel: 'ASR + precision/recall vs. JailbreakBench' },
+        { label: 'Dashboard', sublabel: 'React/TS, deployed to GitHub Pages' },
       ]}
     />
   )
