@@ -1,8 +1,8 @@
 # Vedika Utturwar — Portfolio
 
-Personal portfolio site: [vedika.dev](https://vedika.dev) *(replace with actual deployment URL)*
+Personal portfolio site: [vedika-u.github.io/vedika-utturwar](https://vedika-u.github.io/vedika-utturwar/)
 
-Built to showcase agentic AI, generative AI, backend engineering, and cybersecurity automation work — including Act Aware (an offline SIEM-SOAR platform), an autonomous email productivity agent, and a local-first LangGraph support agent.
+Built to showcase agentic AI, generative AI, backend engineering, and cybersecurity automation work — including AgentPenetrationTest (a self-built LLM agent red-teaming harness), Act Aware (an offline SIEM-SOAR platform), an autonomous email productivity agent, and a local-first LangGraph support agent.
 
 ## Stack
 
